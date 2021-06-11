@@ -18,6 +18,7 @@ async function createResource(newResource) {
 function getResourceByName(resource_name) {
     return db('resources')
         .where({ resource_name })
+        .first()
 }
 
 module.exports = {

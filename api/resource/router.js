@@ -1,5 +1,6 @@
 const express = require('express')
 const ResourceModel = require('./model')
+const {checkNewResourceBody} = require('./middleware')
 
 const router = express.Router()
 
@@ -11,7 +12,7 @@ router.get('/', (req, res, next) => {
         .catch(next)
 })
 
-router.post('/', (req, res, next) => {
+router.post('/', checkNewResourceBody, (req, res, next) => {
     ResourceModel.createResource(req.body)
         .then(resource => {
             res.status(201).json(resource)
