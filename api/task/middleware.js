@@ -4,7 +4,9 @@ const checkNewTaskBody = (req, res, next) => {
             status: 400,
             message: `new tasks require a description`
         })
+    } else {
+        next()
     }
 }
 
-module.exports = {checkNewTaskBody}
+module.exports = { checkNewTaskBody }

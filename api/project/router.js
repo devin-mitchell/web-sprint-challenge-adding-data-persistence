@@ -1,5 +1,6 @@
 const express = require('express')
 const ProjModel = require('./model')
+const { checkNewProjBody } = require('./middleware')
 
 const router = express.Router()
 
@@ -11,7 +12,7 @@ router.get('/', (req, res, next) => {
         .catch(next)
 })
 
-router.post('/', (req, res, next) => {
+router.post('/', checkNewProjBody, (req, res, next) => {
     ProjModel.createProject(req.body)
         .then(project => {
             res.status(201).json(project)

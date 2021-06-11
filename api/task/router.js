@@ -1,5 +1,6 @@
 const express = require('express')
 const TaskModel = require('./model')
+const { checkNewTaskBody } = require('./middleware')
 
 const router = express.Router()
 
@@ -11,7 +12,7 @@ router.get('/', (req, res, next) => {
         .catch(next)
 })
 
-router.post('/', (req, res, next) => {
+router.post('/', checkNewTaskBody, (req, res, next) => {
     TaskModel.createTask(req.body)
         .then(task => {
             res.status(201).json(task)

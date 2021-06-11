@@ -1,6 +1,6 @@
 const express = require('express')
 const ResourceModel = require('./model')
-const {checkNewResourceBody} = require('./middleware')
+const { checkNewResourceBody } = require('./middleware')
 
 const router = express.Router()
 

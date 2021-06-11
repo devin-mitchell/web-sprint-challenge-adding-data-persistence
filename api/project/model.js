@@ -7,14 +7,15 @@ async function getProjects() {
             'project_description',
             'project_completed'
         )
-    
+
     projects.map(proj => {
         if (proj.project_completed === 0) {
             return proj.project_completed = false
         } else {
             return proj.project_completed = true
         }
-    })
+    })  
+
     return projects
 }
 
@@ -23,13 +24,14 @@ async function getProjectById(project_id) {
         .where({ project_id })
         .first()
 
-        if (proj.project_completed === 0) {
-            proj.project_completed = false
-        } else {
-            proj.project_completed = true
-        }
-    return proj
+    if (proj.project_completed === 0) {
+        proj.project_completed = false
+    } else {
+        proj.project_completed = true
     }
+
+    return proj
+}
 
 async function createProject(newProject) {
     const [id] = await db('projects')
