@@ -1,1 +1,5 @@
-// build your `/api/resources` router here
+const express = require('express')
+
+const resourceRouter = express.Router()
+
+module.exports = resourceRouter
