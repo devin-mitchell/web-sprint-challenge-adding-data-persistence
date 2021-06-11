@@ -24,7 +24,8 @@ router.use((err, req, res, next) => {
     res.status(err.status || 500).json({
         message: err.message,
         error: err.error,
-        stack: err.stack
+        stack: err.stack,
+        broke: 'looks like something broke involving RESOURCE'
     })
 })
 
