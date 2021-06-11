@@ -4,17 +4,25 @@ function getResources() {
     return db('resources')
 }
 
-function createResource(newResource) {
-
+function getResourceById(id) {
+    return db('resources')
+        .where({ id })
+        .first()
 }
 
-function getResourceByName(resourceName) {
+async function createResource(newResource) {
+    const [id] = await db('resources').insert(newResource)  
+    return getResourceById(id)
+}
+
+function getResourceByName(resource_name) {
     return db('resources')
-        .where('recources.recource_name', resourceName)
+        .where({ resource_name })
 }
 
 module.exports = {
     getResources,
     createResource,
+    getResourceById,
     getResourceByName
 }
