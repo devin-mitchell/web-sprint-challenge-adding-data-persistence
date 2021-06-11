@@ -12,7 +12,7 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/', (req, res, next) => {
-    TaskModel.createTask()
+    TaskModel.createTask(req.body)
         .then(task => {
             res.status(201).json(task)
         })
