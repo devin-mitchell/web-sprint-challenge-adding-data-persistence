@@ -4,9 +4,9 @@ function getResources() {
     return db('resources')
 }
 
-function getResourceById(id) {
+function getResourceById(resource_id) {
     return db('resources')
-        .where({ id })
+        .where({ resource_id })
         .first()
 }
 

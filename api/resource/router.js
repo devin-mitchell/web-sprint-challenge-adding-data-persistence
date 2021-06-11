@@ -11,6 +11,14 @@ router.get('/', (req, res, next) => {
         .catch(next)
 })
 
+router.post('/', (req, res, next) => {
+    ResourceModel.createResource(req.body)
+        .then(resource => {
+            res.status(201).json(resource)
+        })
+        .catch(next)
+})
+
 router.use((err, req, res, next) => {
     res.status(err.status || 500).json({
         message: err.message,
